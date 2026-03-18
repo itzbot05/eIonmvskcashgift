@@ -1,179 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<style>
-  * { box-sizing: border-box; }
-  
-  html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    overflow-x: hidden;
-    background-color: #050a18;
-    color: white;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    text-align: center;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$5,000 Cash Giveaway - Verified Tech Offer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ছবির কালার স্কিমের সাথে মিল রেখে (গাঢ় নীল, সোনালী) */
+            --primary-bg: #030712; /* একদম গাঢ় নীল/কালো */
+            --container-bg: rgba(17, 24, 39, 0.95); /* কন্টেইনারের জন্য স্বচ্ছ নীল */
+            --gold-text: #FFD700; /* সোনালী লেখা */
+            --timer-red: #EF4444;
+            --progress-blue: #3B82F6;
+            
+            /* আগের বাটন গ্রাডিয়েন্ট কালারগুলো */
+            --btn-orange: linear-gradient(135deg, #FF6F00, #FF3D00);
+            --btn-blue: linear-gradient(135deg, #00B0FF, #2979FF);
+            --btn-green: linear-gradient(135deg, #00C853, #00E676);
+            --btn-pink: linear-gradient(135deg, #F50057, #FF4081);
+            
+            --text-main: #FFFFFF;
+            --text-sub: #A0AEC0;
+        }
 
-  .money-container {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 1;
-  }
-  .dollar {
-    position: absolute;
-    color: rgba(46, 204, 113, 0.3);
-    font-size: 20px;
-    animation: fall linear infinite;
-  }
-  @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--primary-bg); 
+            color: var(--text-main); 
+            font-family: 'Poppins', sans-serif; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* ছবির মতো হালকা টেক-প্যাটার্ন */
+            background-image: radial-gradient(circle at center, #111827 0%, #030712 100%);
+        }
 
-  .content-wrapper {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 450px;
-    margin: 0 auto;
-    padding: 30px 15px;
-  }
+        .container { 
+            max-width: 480px; 
+            width: 90%;
+            margin: 40px auto; 
+            padding: 30px 25px; 
+            border-radius: 28px; 
+            background: var(--container-bg); 
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 215, 0, 0.15); /* হালকা সোনালী বর্ডার */
+            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.2); 
+            text-align: center;
+            overflow: hidden; /* ছবি কন্টেইনারের বাইরে না যায় */
+        }
 
-  /* --- নতুন কুল টাইটেল ডিজাইন --- */
-  .win-text-big {
-    font-size: 40px; 
-    font-weight: 900;
-    /* গোল্ডেন গ্রাডিয়েন্ট কালার */
-    background: linear-gradient(to bottom, #fff7ad 0%, #ffa500 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-    line-height: 1;
-    margin-bottom: 0;
-    display: block;
-    filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.4));
-  }
+        .main-title { 
+            color: var(--gold-text); 
+            font-size: 30px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 10px; 
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
 
-  .get-paid-small {
-    font-size: 22px; /* হালকা একটু বড় করা হয়েছে */
-    font-weight: 700;
-    color: #e2e8f0;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 15px; /* গ্যাপ বাড়ানো হয়েছে */
-    display: block;
-    opacity: 0.9;
-  }
+        .hero-box { 
+            position: relative; 
+            width: 100%; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 2px solid rgba(255, 255, 255, 0.05); 
+            margin-bottom: 25px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
 
-  .timer-box {
-    background: rgba(255, 69, 0, 0.1);
-    border: 1px dashed #ff4500;
-    display: inline-block;
-    padding: 10px 25px;
-    border-radius: 12px;
-    margin: 25px 0;
-    color: #ff4500;
-    font-weight: bold;
-    font-size: 16px;
-  }
+        /* ছবিতে লিঙ্ক অ্যাড করা হয়েছে */
+        .hero-link {
+            display: block;
+            cursor: pointer;
+            text-decoration: none;
+        }
 
-  /* --- কুল ব্রেথিং বাটন --- */
-  .cta-btn {
-    display: block;
-    width: 100%;
-    margin: 15px auto;
-    padding: 18px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 50px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    background-size: 200% auto;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    animation: breathing 3s ease-in-out infinite;
-  }
+        .hero-img { 
+            width: 100%; 
+            display: block; 
+            /* স্কয়ার ক্রপ স্টাইল - ছবির মূল অংশ দেখাবে */
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.3s ease;
+        }
 
-  @keyframes breathing {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-    100% { transform: scale(1); }
-  }
+        .hero-link:hover .hero-img {
+            transform: scale(1.03); /* হোভার করলে হালকা জুম হবে */
+        }
 
-  .cta-btn:hover {
-    transform: translateY(-4px) scale(1.05) !important;
-    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2) !important;
-    filter: brightness(1.2);
-    animation: none;
-  }
+        /* টাইমার এবং প্রগ্রেস বার সেকশন */
+        .timer-section {
+            margin-bottom: 30px;
+        }
 
-  .btn-1 { background-image: linear-gradient(to right, #FF8C00, #FF4500); }
-  .btn-2 { background-image: linear-gradient(to right, #FF4500, #C71585); }
-  .btn-3 { background-image: linear-gradient(to right, #00BFFF, #1E90FF); }
-  .btn-4 { background-image: linear-gradient(to right, #32CD32, #228B22); }
-  .btn-5 { background-image: linear-gradient(to right, #DA70D6, #8A2BE2); }
+        .timer-box { 
+            background: rgba(239, 68, 68, 0.1); 
+            border: 2px solid var(--timer-red); 
+            color: var(--timer-red); 
+            padding: 12px 24px; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+            margin-bottom: 15px;
+        }
 
-  .footer-info {
-    margin-top: 35px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: left;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #94a3b8;
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-</style>
+        /* প্রগ্রেস বার */
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--progress-blue);
+            width: 100%; /* শুরুতে ফুল থাকবে */
+            border-radius: 10px;
+            transition: width 1s linear; /* প্রতি সেকেন্ডে স্মুথভাবে কমবে */
+            background-image: linear-gradient(
+                -45deg, 
+                rgba(255, 255, 255, .2) 25%, 
+                transparent 25%, 
+                transparent 50%, 
+                rgba(255, 255, 255, .2) 50%, 
+                rgba(255, 255, 255, .2) 75%, 
+                transparent 75%, 
+                transparent
+            );
+            background-size: 50px 50px;
+            animation: move-stripes 2s linear infinite;
+        }
+
+        @keyframes move-stripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 0; }
+        }
+
+        /* বাটন গ্রিড */
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* মোবাইল প্রথম - ১ কলাম */
+            gap: 15px;
+        }
+
+        .cta-btn { 
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            color: white; 
+            padding: 18px; 
+            border-radius: 14px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 15px; 
+            transition: all 0.3s ease; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* বাটন কালার */
+        .orange { background: var(--btn-orange); }
+        .blue { background: var(--btn-blue); }
+        .green { background: var(--btn-green); }
+        .pink { background: var(--btn-pink); }
+
+        .cta-btn:hover { 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.6); 
+            filter: brightness(115%);
+        }
+
+        .footer-info {
+            margin-top: 35px;
+            font-size: 12px;
+            color: var(--text-sub);
+            line-height: 1.6;
+            border-top: 1px solid rgba(255, 215, 0, 0.15);
+            padding-top: 25px;
+        }
+
+        /* বড় স্ক্রিনের জন্য বাটন ২ কলাম */
+        @media (min-width: 480px) {
+            .cta-grid { grid-template-columns: 1fr 1fr; }
+            .main-title { font-size: 32px; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="money-container" id="money"></div>
+<div class="container">
+    <div class="main-title">$5,000 CASH GIVEAWAY</div>
 
-  <div class="content-wrapper">
-    <span class="win-text-big">$5,000 Win is Live! 💸</span>
-    <span class="get-paid-small">Get Paid Now</span>
-
-    <div class="timer-box">
-      Offer Ends In: <span id="countdown">04:59</span> ⏳
+    <div class="hero-box">
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="hero-link">
+            <img src="hero.png" alt="Win $5000 Cash Prize" class="hero-img">
+        </a>
     </div>
 
-    <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir%20" class="cta-btn btn-1">💰 CLAIM NOW $750 💰</a>
-    <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir%20" class="cta-btn btn-2">🔥 OTHER SPECIAL OFFERS 🔥</a>
-    <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir%20" class="cta-btn btn-3">💸 GET $750 CASH APP NOW!</a>
-    <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir%20" class="cta-btn btn-4">💵 $5000 CASH TO YOUR ACCOUNT</a>
-    <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir%20" class="cta-btn btn-5">🎁 $100 TACO BELL GIFT CARD!</a>
+    <div class="timer-section">
+        <div class="timer-box">
+            <span>Offer Ends In:</span>
+            <span id="countdown">03:30</span>⌛
+        </div>
+        <div class="progress-bar-container">
+            <div id="progressFill" class="progress-bar-fill"></div>
+        </div>
+    </div>
+
+    <div class="cta-grid">
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="cta-btn orange">💰 Claim $750</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="cta-btn blue">💸 Cash App $750</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="cta-btn green">💵 GET $5000 DIRECT CASH</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="cta-btn pink">🎁 $100 Taco Bell Gift Card</a>
+    </div>
 
     <div class="footer-info">
-      🚀 <b>Don't Miss Your Chance!</b><br>
-      This is your moment to win big! Join thousands of users already receiving rewards. Secure your entry before time runs out. Be fast!
+        🚀 <strong>Limited Premium Opportunity:</strong> You have been officially selected for this high-tier giveaway. Act immediately. Secure verification required.
     </div>
-  </div>
+</div>
 
-  <script>
-    const container = document.getElementById('money');
-    function createMoney() {
-      const el = document.createElement('div');
-      el.className = 'dollar';
-      el.innerText = '$';
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      el.style.opacity = Math.random() * 0.4;
-      container.appendChild(el);
-      setTimeout(() => el.remove(), 5000);
-    }
-    setInterval(createMoney, 400);
+<script>
+    // ৩ মিনিট ৩০ সেকেন্ড কাউন্টডাউন টাইমার এবং প্রগ্রেস বার
+    let totalSeconds = 210; // 3.5 minutes = 3 * 60 + 30
+    let currentSeconds = totalSeconds;
+    const countdownElement = document.getElementById('countdown');
+    const progressFill = document.getElementById('progressFill');
 
-    let time = 299;
-    setInterval(() => {
-      let min = Math.floor(time / 60);
-      let sec = time % 60;
-      document.getElementById('countdown').innerHTML = `0${min}:${sec < 10 ? '0'+sec : sec}`;
-      if (time > 0) time--;
+    const timer = setInterval(() => {
+        let min = Math.floor(currentSeconds / 60);
+        let sec = currentSeconds % 60;
+        
+        countdownElement.innerHTML = `${min < 10 ? '0' + min : min}:${sec < 10 ? '0' + sec : sec}`;
+        
+        // প্রগ্রেস বার আপডেট করা
+        let percentage = (currentSeconds / totalSeconds) * 100;
+        progressFill.style.width = percentage + '%';
+
+        if (currentSeconds > 0) {
+            currentSeconds--;
+        } else {
+            clearInterval(timer);
+            countdownElement.innerHTML = "EXPIRED";
+            countdownElement.parentElement.style.borderColor = "#EF4444";
+            countdownElement.parentElement.style.color = "#EF4444";
+            countdownElement.parentElement.style.background = "rgba(239, 68, 68, 0.2)";
+            progressFill.style.width = '0%';
+        }
     }, 1000);
-  </script>
+</script>
 
 </body>
 </html>
