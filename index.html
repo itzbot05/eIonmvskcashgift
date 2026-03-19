@@ -6,195 +6,141 @@
     <title>Win $5000 Instantly!</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #030816; 
-            --gold: #fcc011;
-            --white: #ffffff;
-        }
-
         body {
             margin: 0; padding: 0;
-            background-color: var(--bg-color);
+            background-color: #020617; 
             font-family: 'Poppins', sans-serif;
-            color: var(--white);
+            color: white;
             display: flex; justify-content: center;
         }
 
-        .main-wrapper {
-            max-width: 450px; width: 100%;
-            background: linear-gradient(180deg, #050f26 0%, #030816 100%);
-            min-height: 100vh;
-            display: flex; flex-direction: column;
-        }
-
-        /* শুধু মেইন টাইটেল */
-        .top-header {
-            padding: 20px 10px 5px;
+        .container {
+            max-width: 420px; width: 100%;
+            background: #020617;
+            padding: 20px 15px;
             text-align: center;
         }
 
-        .top-header h1 {
-            color: var(--gold);
-            font-size: 26px;
-            font-weight: 800;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 15px rgba(252, 192, 17, 0.5);
+        .top-star { color: #fcc011; font-size: 20px; margin-bottom: 5px; }
+        .main-header {
+            color: #fcc011; font-size: 24px; font-weight: 800;
+            margin: 0 0 20px 0; text-transform: capitalize;
         }
 
-        /* হিরো ইমেজ সেকশন */
-        .hero-section {
-            width: 100%;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            margin-top: 10px;
+        .offer-card {
+            background: #0b1224;
+            border: 2px solid #1e293b;
+            border-radius: 25px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-title {
+            color: #fcc011; font-size: 24px; font-weight: 800;
+            margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
 
         .hero-img {
-            width: 100%;
-            display: block;
-            mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
+            width: 90%; height: 160px;
+            object-fit: cover; border-radius: 15px;
+            margin-bottom: 20px; border: 1px solid #334155;
         }
 
-        /* কন্টেন্ট এরিয়া */
-        .content-container {
-            padding: 10px 20px 30px;
-            text-align: center;
+        .progress-container {
+            width: 100%; height: 10px;
+            background: #1e293b; border-radius: 10px;
+            overflow: hidden; margin-bottom: 10px;
         }
 
-        /* টাইমার ও প্রগ্রেস বার */
-        .timer-area {
-            margin-bottom: 25px;
-        }
-
-        .timer-text {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 17px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .progress-box {
-            width: 85%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            margin: 0 auto;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .bar-fill {
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg, #fcc011, #ff8c00);
-            box-shadow: 0 0 15px #fcc011;
+        .progress-fill {
+            height: 100%; width: 100%;
+            background: linear-gradient(90deg, #f97316, #ef4444);
+            box-shadow: 0 0 10px #ef4444;
             transition: width 1s linear;
         }
 
-        /* বাটন লিস্ট */
-        .btn-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .timer-text {
+            color: #fcc011; font-weight: 600; font-size: 15px;
         }
 
-        .action-btn {
-            padding: 16px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--white);
-            font-weight: 700;
-            font-size: 14px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        .btn-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+
+        .btn {
+            padding: 15px; border-radius: 50px;
+            text-decoration: none; color: white;
+            font-weight: 700; font-size: 14px;
+            text-transform: uppercase; display: flex; align-items: center;
+            justify-content: center; gap: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
         }
 
-        .btn-orange { background: linear-gradient(180deg, #ff8c00, #e65100); }
-        .btn-blue { background: linear-gradient(180deg, #0091ff, #005fcc); }
-        .btn-green { background: linear-gradient(180deg, #00c853, #1b5e20); }
-        .btn-pink { background: linear-gradient(180deg, #ff4081, #c51162); }
+        .btn-orange { background: linear-gradient(180deg, #f97316, #c2410c); }
+        .btn-light-orange { background: linear-gradient(180deg, #fb923c, #ea580c); }
+        .btn-blue { background: linear-gradient(180deg, #0ea5e9, #0369a1); }
+        .btn-green { background: linear-gradient(180deg, #22c55e, #15803d); }
+        .btn-pink { background: linear-gradient(180deg, #ec4899, #be185d); }
 
-        .action-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
-        .action-btn:active { transform: scale(0.97); }
+        .btn:hover { transform: scale(1.02); filter: brightness(1.1); }
 
-        /* ইনফো বক্স */
-        .footer-card {
-            background: rgba(13, 22, 43, 0.6);
-            border-radius: 18px;
-            padding: 20px;
-            margin-top: 25px;
-            text-align: left;
-            border: 1px solid rgba(255,255,255,0.05);
+        /* অপশন ১: High Conversion Text Box */
+        .info-box {
+            background: #0b1224; border-radius: 20px;
+            padding: 25px; margin-top: 25px; text-align: left;
+            border: 1px solid #1e293b;
         }
-
-        .footer-card h3 { color: var(--white); margin: 0 0 10px; font-size: 16px; }
-        .footer-card p { color: #94a3b8; font-size: 13px; line-height: 1.5; margin: 0; }
+        .info-box h2 { font-size: 20px; margin-top: 0; color: white; }
+        .info-box p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
 
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <div class="top-header">
-        <h1>Win $5000 Instantly!</h1>
+<div class="container">
+    <div class="top-star">★</div>
+    <h1 class="main-header">Win $5000 Instantly!</h1>
+
+    <div class="offer-card">
+        <div class="card-title">💥 Win $5000 Instantly! 💥</div>
+        
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir">
+            <img src="hero.png" class="hero-img" alt="Reward Image">
+        </a>
+
+        <div class="progress-container">
+            <div id="bar" class="progress-fill"></div>
+        </div>
+        <div class="timer-text">🔥 Offer ends in <span id="timer">03:30</span> ⌛</div>
     </div>
 
-    <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="hero-section">
-        <img src="hero.png" class="hero-img" alt="Win Big Rewards">
-    </a>
+    <div class="btn-list">
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-orange">💰 CLAIM NOW $750 💰</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-light-orange">🔥 OTHER SPECIAL OFFERS 🔥</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-blue">💸 GET $750 CASH APP NOW!</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-green">💵 GET $5000 CASH TO YOUR ACCOUNT</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-pink">🎁 GET A $100 TACO BELL GIFT CARD!</a>
+    </div>
 
-    <div class="content-container">
-        <div class="timer-area">
-            <span class="timer-text">OFFER ENDS IN <span id="time-left">03:30</span> ⌛</span>
-            <div class="progress-box">
-                <div id="bar" class="bar-fill"></div>
-            </div>
-        </div>
-
-        <div class="btn-stack">
-            <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="action-btn btn-orange">💰 CLAIM NOW $750 💰</a>
-            <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="action-btn btn-blue">🔥 OTHER SPECIAL OFFERS 🔥</a>
-            <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="action-btn btn-green">💸 GET $750 CASH APP NOW!</a>
-            <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="action-btn btn-pink">🎁 $100 TACO BELL GIFT CARD!</a>
-        </div>
-
-        <div class="footer-card">
-            <h3>🚀 Don't Miss Your Chance!</h3>
-            <p>This is your moment to win big! Join thousands of people already enjoying instant rewards. Be smart, be quick, and unlock your reward before time runs out.</p>
-        </div>
+    <div class="info-box">
+        <h2>🚀 Act Fast! Your Reward is Waiting!</h2>
+        <p>Join thousands of verified winners today. This exclusive $5,000 giveaway is closing soon! By clicking <strong>CLAIM NOW</strong>, you secure your spot for instant cash prizes, gift cards, and premium bonuses.</p>
+        <p>Don't let someone else take your spot. Be smart, act now, and unlock your $5,000 instant reward before the timer hits zero! 🔥</p>
     </div>
 </div>
 
 <script>
-    let seconds = 210; // 3.5 Minutes
-    const totalDuration = 210;
-    const timerDisplay = document.getElementById('time-left');
-    const progressLine = document.getElementById('bar');
+    let time = 210;
+    const total = 210;
+    const timerEl = document.getElementById('timer');
+    const barEl = document.getElementById('bar');
 
-    const countdownTimer = setInterval(() => {
-        let m = Math.floor(seconds / 60);
-        let s = seconds % 60;
-        timerDisplay.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
-        
-        let currentWidth = (seconds / totalDuration) * 100;
-        progressLine.style.width = currentWidth + '%';
-
-        if (seconds <= 0) {
-            clearInterval(countdownTimer);
-            timerDisplay.innerText = "EXPIRED";
-        }
-        seconds--;
+    setInterval(() => {
+        let m = Math.floor(time / 60);
+        let s = time % 60;
+        timerEl.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+        barEl.style.width = (time / total) * 100 + '%';
+        if (time > 0) time--;
     }, 1000);
 </script>
 
