@@ -4,94 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Win $5000 Instantly!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0; padding: 0;
-            background-color: #020617; 
+            background-color: #010409;
             font-family: 'Poppins', sans-serif;
-            color: white;
+            color: #e6edf3;
             display: flex; justify-content: center;
         }
 
         .container {
             max-width: 420px; width: 100%;
-            background: #020617;
-            padding: 20px 15px;
+            padding: 15px;
             text-align: center;
         }
 
-        .top-star { color: #fcc011; font-size: 20px; margin-bottom: 5px; }
+        .top-star { color: #ffbc00; font-size: 20px; margin-top: 10px; }
         .main-header {
-            color: #fcc011; font-size: 24px; font-weight: 800;
-            margin: 0 0 20px 0; text-transform: capitalize;
+            color: #ffbc00; font-size: 22px; font-weight: 900;
+            margin: 5px 0 15px 0; text-transform: uppercase;
         }
 
         .offer-card {
-            background: #0b1224;
-            border: 2px solid #1e293b;
-            border-radius: 25px;
-            padding: 20px;
+            background: linear-gradient(145deg, #0d1117, #161b22);
+            border: 1px solid #30363d;
+            border-radius: 20px;
+            padding: 20px 15px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
         }
 
-        .card-title {
-            color: #fcc011; font-size: 24px; font-weight: 800;
-            margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;
+        /* আপনার নতুন টেক্সট ডিজাইন */
+        .congrats-text {
+            color: #ffffff; font-size: 24px; font-weight: 900;
+            display: block; margin-bottom: 2px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
+        }
+        .eligible-text {
+            color: #ffbc00; font-size: 18px; font-weight: 700;
+            display: block; margin-bottom: 15px;
         }
 
+        .img-box {
+            width: 100%; border-radius: 12px;
+            overflow: hidden; margin-bottom: 15px;
+            border: 1px solid #444c56;
+            background: #000;
+        }
         .hero-img {
-            width: 90%; height: 160px;
-            object-fit: cover; border-radius: 15px;
-            margin-bottom: 20px; border: 1px solid #334155;
+            width: 100%; height: auto;
+            max-height: 220px;
+            display: block;
+            object-fit: contain; /* ছবি পুরোপুরি ক্লিয়ার দেখাবে */
         }
 
         .progress-container {
-            width: 100%; height: 10px;
-            background: #1e293b; border-radius: 10px;
-            overflow: hidden; margin-bottom: 10px;
+            width: 90%; height: 10px;
+            background: #21262d; border-radius: 10px;
+            margin: 0 auto 10px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .progress-fill {
             height: 100%; width: 100%;
-            background: linear-gradient(90deg, #f97316, #ef4444);
-            box-shadow: 0 0 10px #ef4444;
+            background: linear-gradient(90deg, #ff8c00, #ff0000);
+            box-shadow: 0 0 15px #ff4500;
             transition: width 1s linear;
         }
 
         .timer-text {
-            color: #fcc011; font-weight: 600; font-size: 15px;
+            color: #ffbc00; font-weight: 800; font-size: 15px;
         }
 
+        /* বাটন ডিজাইন - একদম রিয়ালিস্টিক গ্লসি */
         .btn-list { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
 
         .btn {
             padding: 15px; border-radius: 50px;
             text-decoration: none; color: white;
-            font-weight: 700; font-size: 14px;
+            font-weight: 800; font-size: 14px;
             text-transform: uppercase; display: flex; align-items: center;
             justify-content: center; gap: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
+            border-top: 1.5px solid rgba(255,255,255,0.4); /* রিয়ালিস্টিক শাইন */
+            border-bottom: 2px solid rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: 0.2s;
         }
 
-        .btn-orange { background: linear-gradient(180deg, #f97316, #c2410c); }
-        .btn-light-orange { background: linear-gradient(180deg, #fb923c, #ea580c); }
-        .btn-blue { background: linear-gradient(180deg, #0ea5e9, #0369a1); }
-        .btn-green { background: linear-gradient(180deg, #22c55e, #15803d); }
-        .btn-pink { background: linear-gradient(180deg, #ec4899, #be185d); }
+        .btn-orange { background: linear-gradient(180deg, #ff9d00, #ff5e00); }
+        .btn-dark-orange { background: linear-gradient(180deg, #ff6a00, #cc2a00); }
+        .btn-blue { background: linear-gradient(180deg, #33aaff, #0055ee); }
+        .btn-green { background: linear-gradient(180deg, #44dd44, #11aa11); }
+        .btn-pink { background: linear-gradient(180deg, #ff66bb, #cc1177); }
 
-        .btn:hover { transform: scale(1.02); filter: brightness(1.1); }
+        .btn:hover { filter: brightness(1.15); transform: translateY(-2px); }
+        .btn:active { transform: translateY(1px); }
 
-        /* অপশন ১: High Conversion Text Box */
         .info-box {
-            background: #0b1224; border-radius: 20px;
+            background: #0d1117; border-radius: 15px;
             padding: 25px; margin-top: 25px; text-align: left;
-            border: 1px solid #1e293b;
+            border: 1px solid #30363d;
         }
-        .info-box h2 { font-size: 20px; margin-top: 0; color: white; }
-        .info-box p { color: #94a3b8; font-size: 14px; line-height: 1.6; }
+        .info-box h2 { font-size: 19px; margin: 0 0 10px 0; color: #fff; }
+        .info-box p { color: #8b949e; font-size: 14px; line-height: 1.6; }
 
     </style>
 </head>
@@ -102,11 +118,14 @@
     <h1 class="main-header">Win $5000 Instantly!</h1>
 
     <div class="offer-card">
-        <div class="card-title">💥 Win $5000 Instantly! 💥</div>
+        <span class="congrats-text">Congratulations!</span>
+        <span class="eligible-text">You Are Eligible</span>
         
-        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir">
-            <img src="hero.png" class="hero-img" alt="Reward Image">
-        </a>
+        <div class="img-box">
+            <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir">
+                <img src="hero.png" class="hero-img" alt="Official Offer">
+            </a>
+        </div>
 
         <div class="progress-container">
             <div id="bar" class="progress-fill"></div>
@@ -116,10 +135,10 @@
 
     <div class="btn-list">
         <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-orange">💰 CLAIM NOW $750 💰</a>
-        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-light-orange">🔥 OTHER SPECIAL OFFERS 🔥</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-dark-orange">🔥 OTHER SPECIAL OFFERS 🔥</a>
         <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-blue">💸 GET $750 CASH APP NOW!</a>
         <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-green">💵 GET $5000 CASH TO YOUR ACCOUNT</a>
-        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-pink">🎁 GET A $100 TACO BELL GIFT CARD!</a>
+        <a href="https://www.af9m8trk.com/RWG11EZJ/5JY122KX/?s1=Mashbir" class="btn btn-pink">🎁 $100 TACO BELL GIFT CARD!</a>
     </div>
 
     <div class="info-box">
